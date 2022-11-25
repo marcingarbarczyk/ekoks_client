@@ -1,0 +1,15 @@
+version: "3"
+services:
+  dev:
+    container_name: ekoks-dev
+    build: .
+    image: marcingarbarczyk/ekoks-client
+    ports:
+      - "4200:4200"
+    environment:
+      SHELL: /bin/bash
+      NODE_ENV: development
+    volumes:
+      - ./src:/opt/project/src/
+      - ./node_modules/:/opt/project/node_modules/
+    command: /bin/sh -c "npm install && ng serve --host 0.0.0.0"
